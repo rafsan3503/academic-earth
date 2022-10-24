@@ -1,10 +1,16 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile} from 'firebase/auth'
+import {createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, TwitterAuthProvider, updateProfile} from 'firebase/auth'
 import app from '../firebase/firebase.config';
 
 
 export const AuthContext = createContext();
 const auth = getAuth(app)
+
+const googleProvider = new GoogleAuthProvider();
+const twitterProvider = new TwitterAuthProvider();
+const githubProvider = new GithubAuthProvider();
+
+
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('');
 
@@ -34,12 +40,32 @@ const AuthProvider = ({ children }) => {
         return sendPasswordResetEmail(auth,email)
     }
 
+    const googleLogIn = () => {
+        return signInWithPopup(auth, googleProvider);
+    }
+
+    const twitterLogIn = () => {
+        return signInWithPopup(auth, twitterProvider);
+    }
+
+
+    const githubLogIn = () => {
+        return signInWithPopup(auth,githubProvider)
+    }
+    const logOut = () => {
+        return signOut(auth);
+    }
+
     const authInfo = {
       user,
       createUser,
       updateUserInfo,
       userLogIn,
       resetPassword,
+      googleLogIn,
+      logOut,
+      twitterLogIn,
+      githubLogIn,
     };
     return (
         <AuthContext.Provider value={authInfo}>

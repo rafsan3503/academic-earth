@@ -4,7 +4,8 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-    const { userLogIn, resetPassword } = useContext(AuthContext);
+    const { userLogIn, resetPassword, googleLogIn, twitterLogIn, githubLogIn } =
+      useContext(AuthContext);
     const [userEmail,setUserEmail] = useState('')
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,6 +26,16 @@ const Login = () => {
         setUserEmail(email)
     }
 
+    const handleGithub = () => {
+        githubLogIn()
+            .then(result => {
+            toast.success('Github log In success!!')
+            })
+            .catch(error => {
+            toast.error(error.message)
+        })
+    }
+
     const handleForgetPassword = () => {
         if (!userEmail) {
             toast.error('Please type your email first', { autoClose: 500 })
@@ -36,6 +47,22 @@ const Login = () => {
             })
             .catch(error => {
             toast.error(error.message,{autoClose:500})
+        })
+    }
+
+    const handleTwitter = () => {
+      twitterLogIn().then((result) => {
+        toast.success("Twitter Log In Success");
+      });
+    };
+
+    const handleGoogle = () => {
+        googleLogIn()
+            .then(result => {
+            toast.success('Google log In Success!')
+            })
+            .catch(error => {
+            toast.error(error.message)
         })
     }
   return (
@@ -51,6 +78,7 @@ const Login = () => {
       </p>
       <div className="my-6 space-y-4">
         <button
+          onClick={handleGoogle}
           aria-label="Login with Google"
           type="button"
           className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
@@ -66,7 +94,6 @@ const Login = () => {
         </button>
         <button
           aria-label="Login with GitHub"
-          role="button"
           className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
         >
           <svg
@@ -79,8 +106,8 @@ const Login = () => {
           <p>Login with GitHub</p>
         </button>
         <button
+          onClick={handleTwitter}
           aria-label="Login with Twitter"
-          role="button"
           className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
         >
           <svg

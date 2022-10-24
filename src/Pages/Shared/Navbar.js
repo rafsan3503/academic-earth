@@ -2,11 +2,22 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../Assets/logo.png";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import User from '../../Assets/user.png'
+import { FaSignOutAlt } from 'react-icons/fa';
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user } = useContext(AuthContext);
-  console.log(user.photoURL);
+  const { user, logOut} = useContext(AuthContext);
+  console.log(user);
+  
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+      toast.success('Log out success!')
+    })
+  }
+
   return (
     <div className="px-4 py-5 mx-auto md:px-24 bg-amber-200 lg:px-8">
       <div className="relative flex items-center justify-between">
@@ -82,11 +93,14 @@ const Navbar = () => {
         <ul className="flex items-center hidden space-x-8 lg:flex">
           <li>
             {user ? (
+              <div className="flex items-center gap-2">
               <div className="avatar online">
                 <div className="w-16 rounded-full" title={user.displayName}>
-                  <img src={user.photoURL} alt="" />
+                  <img src={user.photoURL? user.photoURL : User} alt="" />
                 </div>
-              </div>
+                </div>
+                <FaSignOutAlt onClick={handleLogOut} className="btn btn-outline btn-primary w-14"/>
+                </div>
             ) : (
               <NavLink
                 to="/login"
