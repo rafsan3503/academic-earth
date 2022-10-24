@@ -63,7 +63,7 @@ const Navbar = () => {
             <li>
               <a
                 href="/"
-                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
+                class="inline-flex btn btn-outline btn-accent items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
                 aria-label="Sign up"
                 title="Sign up"
               >
