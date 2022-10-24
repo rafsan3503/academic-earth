@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const UserContext = () => {
+const UserContext = ({ children }) => {
+    const [user, setUser] = useState('');
+    const [loading, setLoading] = useState(true);
     return (
         <div>
             

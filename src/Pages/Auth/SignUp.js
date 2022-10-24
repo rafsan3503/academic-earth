@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
     const handleSubmit = event => {
@@ -10,6 +11,29 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(fullName,photoUrl,email,password);
+
+        let correctEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-z]+)$/;
+        if (!correctEmail.test(email)) {
+            toast.error('Invalid Email!!');
+            return;
+        }
+
+        if (!/(?=.*[a-zA-Z])/.test(password)) {
+            toast.error('password must have letters!!');
+            return;
+        }
+        if (!/(?=.*\d)/.test(password)) {
+            toast.error('password must contain digits!!');
+            return;
+        }
+        if (!/(?=.*[!#$%&? "])/.test(password)) {
+            toast.error('password should contain special character!!');
+            return;
+        }
+        if (password.length < 8) {
+            toast.error('password must be more than 8 characters');
+            return;
+        }
     }
     
     return (
