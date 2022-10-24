@@ -1,8 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../Contexts/AuthProvider';
+
+
 
 const SignUp = () => {
+    const { createUser, updateUserInfo } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -34,6 +40,23 @@ const SignUp = () => {
             toast.error('password must be more than 8 characters');
             return;
         }
+
+        createUser(email, password)
+            .then(result => {
+                updateUserInfo(fullName, photoUrl)
+                    .then(result => {
+                    
+                    })
+                    .catch(error => {
+                    toast.error(error.message)
+                })
+                toast.success('Success! Log In now')
+                console.log(result.user);
+                navigate('/login')
+            })
+            .catch(error => {
+            toast.error(error.message)
+        })
     }
     
     return (

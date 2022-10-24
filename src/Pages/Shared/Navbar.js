@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../Assets/logo.png";
+import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const user = true;
+  const { user } = useContext(AuthContext);
+  console.log(user.photoURL);
   return (
     <div className="px-4 py-5 mx-auto md:px-24 bg-amber-200 lg:px-8">
-      <div className="rclassNameelative flex items-center justify-between">
+      <div className="relative flex items-center justify-between">
         <NavLink
           to="/"
           aria-label="Company"
@@ -80,6 +82,12 @@ const Navbar = () => {
         <ul className="flex items-center hidden space-x-8 lg:flex">
           <li>
             {user ? (
+              <div className="avatar online">
+                <div className="w-16 rounded-full" title={user.displayName}>
+                  <img src={user.photoURL} alt="" />
+                </div>
+              </div>
+            ) : (
               <NavLink
                 to="/login"
                 className="inline-flex btn btn-outline btn-accent items-center justify-center h-12 px-6 font-medium"
@@ -88,12 +96,6 @@ const Navbar = () => {
               >
                 Log In
               </NavLink>
-            ) : (
-              <div className="avatar online">
-                <div className="w-16 rounded-full" title="User Name">
-                  <img src="https://placeimg.com/192/192/people" alt="" />
-                </div>
-              </div>
             )}
           </li>
           <label className="swap swap-rotate">
@@ -116,7 +118,7 @@ const Navbar = () => {
             </svg>
           </label>
         </ul>
-        <div className="lg:hidden">
+        <div className="lg:hidden z-10">
           <button
             aria-label="Open Menu"
             title="Open Menu"
@@ -174,55 +176,55 @@ const Navbar = () => {
                 <nav>
                   <ul className="space-y-4">
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        to="/home"
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
                         Home
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        to="/courses"
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
                         Courses
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        href="/blogs"
                         aria-label="Product pricing"
                         title="Product pricing"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
                         Blogs
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        to="/faq"
                         aria-label="About us"
                         title="About us"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
                         FAQ
-                      </a>
+                      </Link>
                     </li>
 
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        to="/login"
                         className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md btn btn-outline btn-accent"
                         aria-label="Sign up"
                         title="Sign up"
                       >
-                        Sign up
-                      </a>
+                        Log In
+                      </Link>
                     </li>
                   </ul>
                 </nav>
