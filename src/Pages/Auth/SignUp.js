@@ -1,16 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     return (
-      <div className="w-full max-w-md mx-auto my-10 border-2 border-amber-200 p-8 space-y-3 rounded-xl">
+      <div className="w-full max-w-md mx-auto my-10 border-2 border-amber-200 backdrop-blur-md p-8 space-y-3 rounded-xl">
         <h1 className="text-2xl font-bold text-center">Sign Up</h1>
         <form
           novalidate=""
           action=""
-          className="space-y-6 ng-untouched ng-pristine ng-valid"
+          className="space-y-6"
         >
           <div className="space-y-1 text-sm">
-            <label for="username" className="block dark:text-gray-400">
+            <label for="username" className="block">
               Username
             </label>
             <input
@@ -18,7 +19,7 @@ const SignUp = () => {
               name="username"
               id="username"
               placeholder="Username"
-              className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+              className="w-full px-4 py-3 rounded-md"
             />
           </div>
           <div className="space-y-1 text-sm">
@@ -38,8 +39,8 @@ const SignUp = () => {
               </a>
             </div>
           </div>
-          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">
-            Sign in
+          <button className="block w-full p-3 text-center btn btn-outline btn-accent rounded-sm">
+            Sign Up
           </button>
         </form>
         <div className="flex items-center pt-4 space-x-1">
@@ -79,14 +80,14 @@ const SignUp = () => {
           </button>
         </div>
         <p className="text-xs text-center sm:px-6 dark:text-gray-400">
-          Don't have an account?
-          <a
+          Already have an account?
+          <Link
             rel="noopener noreferrer"
-            href="#"
+            to="/login"
             className="underline dark:text-gray-100"
           >
-            Sign up
-          </a>
+            Log In
+          </Link>
         </p>
       </div>
     );
