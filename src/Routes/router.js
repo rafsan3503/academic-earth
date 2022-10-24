@@ -7,6 +7,8 @@ import Blog from '../Pages/Blog';
 import Faq from "../Pages/Faq";
 import Courses from "../Pages/Courses/Courses";
 import ErrorPage from "../Pages/ErrorPage";
+import CourseDetails from "../Pages/Courses/CourseDetails";
+import { async } from "@firebase/util";
 
 const router = createBrowserRouter([
   {
@@ -39,8 +41,14 @@ const router = createBrowserRouter([
             element: <Faq/>
         },
         {
-            path: '/courses',
+          path: '/courses',
+          loader: async () => fetch('https://academic-earth-server.vercel.app/courses'),
             element: <Courses/>
+      },
+      {
+        path: '/courses/:id',
+        loader: async({params}) =>fetch(`https://academic-earth-server.vercel.app/courses/${params.id}`),
+        element: <CourseDetails/>
         }
     ],
   },
