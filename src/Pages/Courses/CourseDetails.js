@@ -68,6 +68,12 @@ const CourseDetails = () => {
                   >
                     Get Premium Access
                   </Link>
+                  <Link
+                    to="/courses"
+                    className="btn btn-outline"
+                  >
+                    Back to courses
+                  </Link>
                 </div>
               </div>
               <div aria-hidden="true" className="mt-10 lg:mt-0">
@@ -167,8 +173,6 @@ const CourseDetails = () => {
             <div></div>
           </div>
         </section>
-
-        
       </div>
     );
 };

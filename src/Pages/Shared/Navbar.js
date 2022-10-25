@@ -94,13 +94,18 @@ const Navbar = () => {
           <li>
             {user ? (
               <div className="flex items-center gap-2">
-              <div className="avatar online">
-                <div className="w-16 rounded-full" title={user.displayName}>
-                  <img src={user.photoURL? user.photoURL : User} alt="" />
+                <div className="avatar online">
+                  <div className="w-16 rounded-full" title={user.displayName}>
+                    <Link to='/profile'>
+                      <img src={user.photoURL ? user.photoURL : User} alt="" />
+                    </Link>
+                  </div>
                 </div>
-                </div>
-                <FaSignOutAlt onClick={handleLogOut} className="btn btn-outline btn-primary w-14"/>
-                </div>
+                <FaSignOutAlt
+                  onClick={handleLogOut}
+                  className="btn btn-outline btn-primary w-14"
+                />
+              </div>
             ) : (
               <NavLink
                 to="/login"

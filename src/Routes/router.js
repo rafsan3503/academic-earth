@@ -11,6 +11,7 @@ import CourseDetails from "../Pages/Courses/CourseDetails";
 import { async } from "@firebase/util";
 import Premium from "../Pages/Others/Premium";
 import PrivateRouter from "./PrivateRouter";
+import Profile from "../Pages/Others/Profile";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
       },
+      {
+        path: '/profile',
+        element: <Profile/>
+      }
     ],
   },
 ]);
