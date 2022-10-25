@@ -5,7 +5,7 @@ const Courses = () => {
   const courses = useLoaderData();
   return (
     <div className="flex flex-col-reverse lg:flex-row">
-      <div className="w-11/12 lg:w-3/4 p-5 mx-auto dark:bg-gray-800 dark:text-gray-100">
+      <div className="w-11/12 lg:w-3/4 p-5 mx-auto">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 sm:grid-cols-2">
           {courses.map((course) => (
             <Link

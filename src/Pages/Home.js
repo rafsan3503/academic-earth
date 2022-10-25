@@ -53,9 +53,7 @@ const Home = () => {
               <div className="max-w-xl mb-6">
                 <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none">
                   An educated mind
-                  <span className="inline-block">
-                    can teach many
-                  </span>
+                  <span className="inline-block">can teach many</span>
                 </h2>
                 <p className="text-base md:text-lg">
                   Web-based learning refers to the type of learning that uses
@@ -219,15 +217,13 @@ const Home = () => {
                   </svg>
                 </p>
               </div>
-              <div className="flex flex-col items-center justify-center p-8 rounded-b-lg">
+              <div className="flex flex-col items-center justify-center p-8 rounded-b-lg dark:bg-violet-400 dark:text-gray-900">
                 <img
                   src="https://source.unsplash.com/50x50/?portrait?3"
                   alt=""
                   className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full"
                 />
-                <p className="text-xl font-semibold leading-tight">
-                  Henry
-                </p>
+                <p className="text-xl font-semibold leading-tight">Henry</p>
                 <p className="text-sm uppercase">Front end developer</p>
               </div>
             </div>
@@ -267,9 +263,7 @@ const Home = () => {
                   alt=""
                   className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-700"
                 />
-                <p className="text-xl font-semibold leading-tight">
-                  Mark wood
-                </p>
+                <p className="text-xl font-semibold leading-tight">Mark wood</p>
                 <p className="text-sm uppercase">Web developer</p>
               </div>
             </div>
