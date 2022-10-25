@@ -14,7 +14,6 @@ const SignUp = () => {
     const photoUrl = form.url.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(fullName, photoUrl, email, password);
 
     let correctEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-z]+)$/;
     if (!correctEmail.test(email)) {

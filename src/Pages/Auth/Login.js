@@ -4,74 +4,76 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-    const { userLogIn, resetPassword, googleLogIn, twitterLogIn, githubLogIn } =
-        useContext(AuthContext);
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
-    const navigate = useNavigate();
-    const [userEmail,setUserEmail] = useState('')
+  const { userLogIn, resetPassword, googleLogIn, twitterLogIn, githubLogIn } =
+    useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+  const [userEmail, setUserEmail] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
-      const password = form.password.value;
-      userLogIn(email, password)
-          .then(result => {
-              navigate(from,{replace:true})
-          toast.success('Log In success!!')
-          })
-          .catch(error => {
-          toast.error(error.message)
+    const password = form.password.value;
+    userLogIn(email, password)
+      .then((result) => {
+        navigate(from, { replace: true });
+        toast.success("Log In success!!");
       })
-    };
-    
-    const handleEmail = (e) => {
-        const email = e.target.value;
-        setUserEmail(email)
-    }
-
-    const handleGithub = () => {
-        githubLogIn()
-            .then(result => {
-                navigate(from, { replace: true });
-            toast.success('Github log In success!!')
-            })
-            .catch(error => {
-            toast.error(error.message)
-        })
-    }
-
-    const handleForgetPassword = () => {
-        if (!userEmail) {
-            toast.error('Please type your email first', { autoClose: 500 })
-            return;
-        }
-        resetPassword(userEmail)
-            .then(() => {
-            toast.success("Password verification link send! check your inbox/spam box")
-            })
-            .catch(error => {
-            toast.error(error.message,{autoClose:500})
-        })
-    }
-
-    const handleTwitter = () => {
-        twitterLogIn().then((result) => {
-          navigate(from, { replace: true });
-        toast.success("Twitter Log In Success");
+      .catch((error) => {
+        toast.error(error.message);
       });
-    };
+  };
 
-    const handleGoogle = () => {
-        googleLogIn()
-            .then(result => {
-                navigate(from, { replace: true });
-            toast.success('Google log In Success!')
-            })
-            .catch(error => {
-            toast.error(error.message)
-        })
+  const handleEmail = (e) => {
+    const email = e.target.value;
+    setUserEmail(email);
+  };
+
+  const handleGithub = () => {
+    githubLogIn()
+      .then((result) => {
+        navigate(from, { replace: true });
+        toast.success("Github log In success!!");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
+  const handleForgetPassword = () => {
+    if (!userEmail) {
+      toast.error("Please type your email first", { autoClose: 500 });
+      return;
     }
+    resetPassword(userEmail)
+      .then(() => {
+        toast.success(
+          "Password verification link send! check your inbox/spam box"
+        );
+      })
+      .catch((error) => {
+        toast.error(error.message, { autoClose: 500 });
+      });
+  };
+
+  const handleTwitter = () => {
+    twitterLogIn().then((result) => {
+      navigate(from, { replace: true });
+      toast.success("Twitter Log In Success");
+    });
+  };
+
+  const handleGoogle = () => {
+    googleLogIn()
+      .then((result) => {
+        navigate(from, { replace: true });
+        toast.success("Google log In Success!");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   return (
     <div className="w-full max-w-md mx-auto my-10 p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100 border-2 backdrop-blur-md border-amber-200">
       <h2 className="mb-3 text-3xl font-semibold text-center">
