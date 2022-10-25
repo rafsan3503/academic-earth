@@ -75,7 +75,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="w-full max-w-md mx-auto my-10 p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100 border-2 backdrop-blur-md border-amber-200">
+    <div className="w-full max-w-md mx-auto my-10 p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100 border-2 border-amber-200">
       <h2 className="mb-3 text-3xl font-semibold text-center">
         Login to your account
       </h2>

@@ -55,7 +55,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto my-10 border-2 border-amber-200 backdrop-blur-md p-8 space-y-3 rounded-xl">
+    <div className="w-full max-w-md mx-auto my-10 border-2 border-amber-200  p-8 space-y-3 rounded-xl z-0">
       <h1 className="text-2xl font-bold text-center">Sign Up</h1>
       <form action="" className="space-y-6" onSubmit={handleSubmit}>
         <div className="space-y-1 text-sm">

@@ -152,7 +152,7 @@ const Navbar = () => {
             </svg>
           </label>
         </ul>
-        <div className="lg:hidden z-10">
+        <div className="lg:hidden z-20">
           <button
             aria-label="Open Menu"
             title="Open Menu"
