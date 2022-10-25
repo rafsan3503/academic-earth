@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
     const { userLogIn, resetPassword, googleLogIn, twitterLogIn, githubLogIn } =
-      useContext(AuthContext);
+        useContext(AuthContext);
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    const navigate = useNavigate();
     const [userEmail,setUserEmail] = useState('')
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,6 +17,7 @@ const Login = () => {
       const password = form.password.value;
       userLogIn(email, password)
           .then(result => {
+              navigate(from,{replace:true})
           toast.success('Log In success!!')
           })
           .catch(error => {
@@ -29,6 +33,7 @@ const Login = () => {
     const handleGithub = () => {
         githubLogIn()
             .then(result => {
+                navigate(from, { replace: true });
             toast.success('Github log In success!!')
             })
             .catch(error => {
@@ -51,7 +56,8 @@ const Login = () => {
     }
 
     const handleTwitter = () => {
-      twitterLogIn().then((result) => {
+        twitterLogIn().then((result) => {
+          navigate(from, { replace: true });
         toast.success("Twitter Log In Success");
       });
     };
@@ -59,6 +65,7 @@ const Login = () => {
     const handleGoogle = () => {
         googleLogIn()
             .then(result => {
+                navigate(from, { replace: true });
             toast.success('Google log In Success!')
             })
             .catch(error => {

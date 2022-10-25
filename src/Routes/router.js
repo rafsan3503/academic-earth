@@ -9,12 +9,14 @@ import Courses from "../Pages/Courses/Courses";
 import ErrorPage from "../Pages/ErrorPage";
 import CourseDetails from "../Pages/Courses/CourseDetails";
 import { async } from "@firebase/util";
+import Premium from "../Pages/Others/Premium";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
   {
     path: "/",
-        element: <Main />,
-    errorElement:<ErrorPage/>,
+    element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -23,33 +25,49 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
-        },
-        {
-            path: "/login",
-            element: <Login/>
-        },
-        {
-            path: '/signup',
-            element: <SignUp/>
-        },
-        {
-            path: '/blogs',
-            element: <Blog/>
-        },
-        {
-            path: '/faq',
-            element: <Faq/>
-        },
-        {
-          path: '/courses',
-          loader: async () => fetch('https://academic-earth-server.vercel.app/courses'),
-            element: <Courses/>
       },
       {
-        path: '/courses/:id',
-        loader: async({params}) =>fetch(`https://academic-earth-server.vercel.app/courses/${params.id}`),
-        element: <CourseDetails/>
-        }
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+        path: "/blogs",
+        element: <Blog />,
+      },
+      {
+        path: "/faq",
+        element: <Faq />,
+      },
+      {
+        path: "/courses",
+        loader: async () =>
+          fetch("https://academic-earth-server.vercel.app/courses"),
+        element: <Courses />,
+      },
+      {
+        path: "/courses/:id",
+        loader: async ({ params }) =>
+          fetch(
+            `https://academic-earth-server.vercel.app/courses/${params.id}`
+          ),
+        element: <CourseDetails />,
+      },
+      {
+        path: "/course/:id",
+        loader: async ({ params }) =>
+          fetch(
+            `https://academic-earth-server.vercel.app/courses/${params.id}`
+          ),
+        element: (
+          <PrivateRouter>
+            <Premium />
+          </PrivateRouter>
+        ),
+      },
     ],
   },
 ]);

@@ -13,10 +13,12 @@ const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('');
+    const [loading,setLoading] = useState(true)
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            setLoading(false)
         })
         return () => unsubscribe();
     },[])
@@ -33,6 +35,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const userLogIn = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -41,15 +44,18 @@ const AuthProvider = ({ children }) => {
     }
 
     const googleLogIn = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
     const twitterLogIn = () => {
+        setLoading(true);
         return signInWithPopup(auth, twitterProvider);
     }
 
 
     const githubLogIn = () => {
+        setLoading(true);
         return signInWithPopup(auth,githubProvider)
     }
     const logOut = () => {
@@ -65,7 +71,8 @@ const AuthProvider = ({ children }) => {
       googleLogIn,
       logOut,
       twitterLogIn,
-      githubLogIn,
+        githubLogIn,
+      loading
     };
     return (
         <AuthContext.Provider value={authInfo}>
