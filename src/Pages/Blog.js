@@ -6,7 +6,7 @@ const Blog = () => {
         <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
           <div
             className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm"
-            data-aos="fade-up-right"
+            
           >
             <img
               src="https://images.ctfassets.net/nx13ojx82pll/60miWU6vSisC1N2IgQRPkt/61066f84608375c590b6dcb68fb47dc0/nodejs-cors-guide-what-it-is-and-how-to-enable-it-picture-1.png?w=1744&h=982&q=80&fm=png"

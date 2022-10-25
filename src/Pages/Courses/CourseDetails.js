@@ -6,6 +6,10 @@ import { FcDownload } from "react-icons/fc";
 const CourseDetails = () => {
   const course = useLoaderData();
   const ref = React.createRef();
+  const options = {
+    orientation: "landscape",
+    unit: "in",
+  };
   return (
     <div>
       <section className="dark:bg-gray-800 dark:text-gray-100">
@@ -15,9 +19,12 @@ const CourseDetails = () => {
               {course.name}
             </h2>
             <React.Fragment>
-              <Pdf targetRef={ref} filename={course.name}>
+              <Pdf targetRef={ref} options={options} filename={course.name}>
                 {({ toPdf }) => (
-                  <button className="btn btn-outline" onClick={toPdf}>
+                  <button
+                    className="btn btn-outline"
+                    onClick={toPdf}
+                  >
                     Download Pdf <FcDownload />
                   </button>
                 )}
@@ -25,7 +32,7 @@ const CourseDetails = () => {
             </React.Fragment>
           </div>
           <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
-            <div ref={ref}>
+            <div ref={ref} className='text-center'>
               <h3 className="text-2xl font-bold tracking-tight sm:text-3xl dark:text-gray-50">
                 Description:
               </h3>
@@ -33,7 +40,7 @@ const CourseDetails = () => {
                 {course.description}
               </p>
               <div className="mt-12 space-y-12">
-                {course.feature.map((option,_idx) => (
+                {course.feature.map((option, _idx) => (
                   <div className="flex" key={_idx}>
                     <div className="flex-shrink-0">
                       <div className="flex items-center justify-center w-12 h-12 rounded-md dark:bg-violet-400 dark:text-gray-900">
@@ -63,7 +70,7 @@ const CourseDetails = () => {
 
                 <h2 className="text-3xl font-bold">Price: {course.price}$</h2>
                 <Link
-                  to={`/course/${course.id}`}
+                  to={`/checkout/${course.id}`}
                   className="btn btn-outline btn-accent"
                 >
                   Get Premium Access

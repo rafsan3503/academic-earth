@@ -58,7 +58,7 @@ const router = createBrowserRouter([
         element: <CourseDetails />,
       },
       {
-        path: "/course/:id",
+        path: "/checkout/:id",
         loader: async ({ params }) =>
           fetch(
             `https://academic-earth-server.vercel.app/courses/${params.id}`
