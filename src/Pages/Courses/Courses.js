@@ -10,7 +10,7 @@ const Courses = () => {
             {courses.map((course) => (
               <Link
                 to={`/courses/${course.id}`}
-                className="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96 hover:animate-pulse"
+                className="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96 hover:animate-pulse rounded-md shadow-md bg-opacity-40"
                 style={{ backgroundImage: `url(${course.img})` }}
               >
                 <div className="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b"></div>
@@ -25,7 +25,7 @@ const Courses = () => {
                   <p
                     rel="noopener noreferrer"
                     href="#"
-                    className="font-medium text-3xl text-amber-300 backdrop-blur-lg p-3"
+                    className="font-bold text-xl p-3 bg-white w-full hover:bg-black hover:text-white rounded-lg shadow-md"
                   >
                     {course.name}
                   </p>

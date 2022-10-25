@@ -158,7 +158,6 @@ const Login = () => {
               </label>
               <Link
                 onClick={handleForgetPassword}
-                rel="noopener noreferrer"
                 href="#"
                 className="text-xs hover:underline dark:text-gray-400"
               >

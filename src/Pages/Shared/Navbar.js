@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, logOut} = useContext(AuthContext);
+  const { user, logOut,setTheme} = useContext(AuthContext);
   console.log(user);
   
   const handleLogOut = () => {
@@ -18,8 +18,16 @@ const Navbar = () => {
     })
   }
 
+  const handleLight = () => {
+    setTheme('light')
+  }
+
+  const handleDark = () => {
+    setTheme('forest')
+  }
+
   return (
-    <div className="px-4 py-5 mx-auto md:px-24 bg-amber-200 lg:px-8">
+    <div className="px-4 py-5 mx-auto md:px-24 backdrop-blur-md lg:px-8">
       <div className="relative flex items-center justify-between">
         <NavLink
           to="/"
@@ -28,7 +36,7 @@ const Navbar = () => {
           className="flex items-center"
         >
           <img className="w-[60px]" src={logo} alt="" />
-          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+          <span className="ml-2 text-xl font-bold tracking-wide uppercase">
             Academic Earth
           </span>
         </NavLink>
@@ -95,8 +103,13 @@ const Navbar = () => {
             {user ? (
               <div className="flex items-center gap-2">
                 <div className="avatar online">
-                  <div className="w-16 rounded-full" title={user.displayName? user.displayName: 'No Name Found'}>
-                    <Link to='/profile'>
+                  <div
+                    className="w-16 rounded-full"
+                    title={
+                      user.displayName ? user.displayName : "No Name Found"
+                    }
+                  >
+                    <Link to="/profile">
                       <img src={user.photoURL ? user.photoURL : User} alt="" />
                     </Link>
                   </div>
@@ -121,6 +134,7 @@ const Navbar = () => {
             <input type="checkbox" />
 
             <svg
+              onClick={handleDark}
               className="swap-on fill-current w-10 h-10"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -129,6 +143,7 @@ const Navbar = () => {
             </svg>
 
             <svg
+              onClick={handleLight}
               className="swap-off fill-current w-10 h-10"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
