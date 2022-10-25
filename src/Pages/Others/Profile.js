@@ -1,11 +1,25 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Profile = () => {
-    const { user } = useContext(AuthContext);
-    const [disable,setDisable] = useState(true)
+    const { user, updateUserInfo } = useContext(AuthContext);
+    const [disable, setDisable] = useState(true);
+    const handleEdit = (e) => {
+        e.preventDefault();
+        setDisable(false)
+    }
+    const handleSubmit = event => {
+        event.preventDefault();
+        const name = event.target.fullName.value;
+        const photoURL = event.target.url.value;
+        updateUserInfo(name, photoURL)
+            .then(() => {
+            toast.success('Profile Update successful!,Please reload to see changes!')
+        })
+    }
     return (
       <div>
         <div className="max-w-md p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100">
@@ -43,7 +57,7 @@ const Profile = () => {
         </div>
 
         <section className="p-6 bg-gray-800 text-gray-50">
-          <form className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
+          <form onSubmit={handleSubmit} className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
             <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
               <div className="space-y-2 col-span-full lg:col-span-1">
                 <p className="font-medium">Personal Inormation</p>
@@ -51,10 +65,11 @@ const Profile = () => {
               <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
                 <div className="col-span-full sm:col-span-3">
                   <label for="firstname" className="text-sm">
-                    First name
+                    FUll name
                   </label>
                   <input
-                    type="text"
+                                    type="text"
+                                    name='fullName'
                     defaultValue={user.displayName}
                     disabled={disable}
                     className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
@@ -65,9 +80,10 @@ const Profile = () => {
                     Email
                   </label>
                   <input
-                    type="email"
+                                    type="email"
+                                    name='email'
                     defaultValue={user.email}
-                    disabled={disable}
+                    disabled
                     className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
                   />
                 </div>
@@ -76,15 +92,15 @@ const Profile = () => {
                     Photo URL
                   </label>
                   <input
-                    id="address"
-                    type="text"
+                                    type="text"
+                                    name='url'
                     disabled={disable}
                     defaultValue={user.photoURL}
                     className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
                   />
                 </div>
-                <button className="btn btn-primary">Edit Info</button>
-                <button className="btn btn-accent">Update</button>
+                <button onClick={handleEdit} className="btn btn-primary">Edit Info</button>
+                <button type='submit' className="btn btn-accent">Update</button>
               </div>
             </fieldset>
           </form>

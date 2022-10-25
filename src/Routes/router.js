@@ -70,9 +70,13 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/profile',
-        element: <Profile/>
-      }
+        path: "/profile",
+        element: (
+          <PrivateRouter>
+            <Profile />
+          </PrivateRouter>
+        ),
+      },
     ],
   },
 ]);

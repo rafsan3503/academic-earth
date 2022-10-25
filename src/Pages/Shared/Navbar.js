@@ -95,7 +95,7 @@ const Navbar = () => {
             {user ? (
               <div className="flex items-center gap-2">
                 <div className="avatar online">
-                  <div className="w-16 rounded-full" title={user.displayName}>
+                  <div className="w-16 rounded-full" title={user.displayName? user.displayName: 'No Name Found'}>
                     <Link to='/profile'>
                       <img src={user.photoURL ? user.photoURL : User} alt="" />
                     </Link>
@@ -167,7 +167,7 @@ const Navbar = () => {
                     <a
                       href="/"
                       aria-label="Company"
-                      title="Company"
+                      title="Academic Earth"
                       className="inline-flex items-center"
                     >
                       <img src={logo} className="w-[60px]" alt="" />

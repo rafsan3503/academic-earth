@@ -6,9 +6,10 @@ const Courses = () => {
     return (
       <div className="flex flex-col-reverse lg:flex-row">
         <div className="w-11/12 lg:w-3/4 p-5 mx-auto dark:bg-gray-800 dark:text-gray-100">
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 sm:grid-cols-2">
             {courses.map((course) => (
-              <div
+              <Link
+                to={`/courses/${course.id}`}
                 className="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96 hover:animate-pulse"
                 style={{ backgroundImage: `url(${course.img})` }}
               >
@@ -29,7 +30,7 @@ const Courses = () => {
                     {course.name}
                   </p>
                 </h2>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -42,7 +43,8 @@ const Courses = () => {
               </h2>
               <div className="flex flex-col space-y-1">
                 {courses.map((course) => (
-                  <Link to={`/courses/${course.id}`}
+                  <Link
+                    to={`/courses/${course.id}`}
                     className="btn btn-outline btn-accent"
                     rel="noopener noreferrer"
                     href="#"
