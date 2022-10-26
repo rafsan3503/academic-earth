@@ -36,7 +36,7 @@ const Courses = () => {
         </div>
       </div>
 
-      <aside className="w-9/12 mt-10 lg:mt-0 mx-auto lg:w-1/4 p-6 text-white rounded-lg shadow-lg bg-black">
+      <aside className="w-9/12 mt-10 lg:mt-0 mx-auto lg:w-1/4 p-6 text-white rounded-lg shadow-lg bg-teal-200">
         <nav className="space-y-8 text-sm">
           <div className="space-y-2">
             <h2 className="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">
