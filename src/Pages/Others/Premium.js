@@ -255,11 +255,12 @@ const Premium = () => {
           </div>
           <div className="flex items-center justify-center">
             <Link
+            to={`/courses/${premium.id}`}
               rel="noopener noreferrer"
               href="#"
               className="text-sm text-gray-400"
             >
-              Maybe later
+              Back to Previous Page
             </Link>
           </div>
         </div>
