@@ -72,7 +72,7 @@ const Profile = () => {
                                     name='fullName'
                     defaultValue={user.displayName}
                     disabled={disable}
-                    className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
+                    className="w-full p-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
                   />
                 </div>
                 <div className="col-span-full sm:col-span-3">
@@ -84,7 +84,7 @@ const Profile = () => {
                                     name='email'
                     defaultValue={user.email}
                     disabled
-                    className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
+                    className="w-full p-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
                   />
                 </div>
                 <div className="col-span-full">
@@ -96,11 +96,13 @@ const Profile = () => {
                                     name='url'
                     disabled={disable}
                     defaultValue={user.photoURL}
-                    className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
+                    className="w-full p-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
                   />
                 </div>
-                <button onClick={handleEdit} className="btn btn-primary">Edit Info</button>
+                <div className='flex gap-3'>
+                <button onClick={handleEdit} className="btn btn-primary">Edit</button>
                 <button type='submit' className="btn btn-accent">Update</button>
+                </div>
               </div>
             </fieldset>
           </form>
