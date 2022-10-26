@@ -7,10 +7,14 @@ import { FaSignOutAlt } from 'react-icons/fa';
 import { toast } from "react-toastify";
 
 const Navbar = () => {
+  // navbar menu toggle 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // get user , themetoggle from context api 
   const { user, logOut,setTheme} = useContext(AuthContext);
   console.log(user);
   
+  // logout function 
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -18,10 +22,12 @@ const Navbar = () => {
     })
   }
 
+  // light mode 
   const handleLight = () => {
     setTheme('light')
   }
 
+  // dark mood 
   const handleDark = () => {
     setTheme('forest')
   }

@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Premium = () => {
+  // get dymanic data for premium route 
     const premium = useLoaderData();
     const handleFeedback = () => {
         toast.success('Thanks for your feedback!!',{autoClose:500})

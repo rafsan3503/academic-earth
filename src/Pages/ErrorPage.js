@@ -4,8 +4,8 @@ import Footer from './Shared/Footer';
 import Navbar from './Shared/Navbar';
 
 const ErrorPage = () => {
+  // get error text from hook 
     const error = useRouteError();
-    console.log(error);
     return (
         <div>
             <Navbar/>

@@ -4,12 +4,17 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
+  // get data from context api 
   const { userLogIn, resetPassword, googleLogIn, twitterLogIn, githubLogIn } =
     useContext(AuthContext);
+
+  // get state location 
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState("");
+
+  // form submit function 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -25,10 +30,14 @@ const Login = () => {
       });
   };
 
+  // set email for password reset 
+
   const handleEmail = (e) => {
     const email = e.target.value;
     setUserEmail(email);
   };
+
+  // github login 
 
   const handleGithub = () => {
     githubLogIn()
@@ -40,6 +49,8 @@ const Login = () => {
         toast.error(error.message);
       });
   };
+
+  // send forget password link 
 
   const handleForgetPassword = () => {
     if (!userEmail) {
@@ -57,6 +68,8 @@ const Login = () => {
       });
   };
 
+  // twitter login 
+
   const handleTwitter = () => {
     twitterLogIn().then((result) => {
       navigate(from, { replace: true });
@@ -64,6 +77,7 @@ const Login = () => {
     });
   };
 
+  // google log in 
   const handleGoogle = () => {
     googleLogIn()
       .then((result) => {

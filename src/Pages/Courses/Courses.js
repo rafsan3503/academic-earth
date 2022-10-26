@@ -2,11 +2,14 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const Courses = () => {
+  // get fake course data from server 
   const courses = useLoaderData();
   return (
     <div className="flex flex-col-reverse lg:flex-row">
       <div className="w-11/12 lg:w-3/4 p-5 mx-auto">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 sm:grid-cols-2">
+
+          {/* individual course  */}
           {courses.map((course) => (
             <Link
               data-aos="fade-up-right"
@@ -35,6 +38,8 @@ const Courses = () => {
           ))}
         </div>
       </div>
+
+      {/* side Navbar */}
 
       <aside className="w-9/12 mt-10 lg:mt-0 mx-auto lg:w-1/4 p-6 text-white rounded-lg shadow-lg bg-teal-200">
         <nav className="space-y-8 text-sm">

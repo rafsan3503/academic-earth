@@ -5,7 +5,9 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Profile = () => {
+  // get user info from api context 
     const { user, updateUserInfo } = useContext(AuthContext);
+    // disable state for update info 
     const [disable, setDisable] = useState(true);
     const handleEdit = (e) => {
         e.preventDefault();
@@ -15,6 +17,8 @@ const Profile = () => {
         event.preventDefault();
         const name = event.target.fullName.value;
         const photoURL = event.target.url.value;
+
+        // info update funtion, need to reload 
         updateUserInfo(name, photoURL)
             .then(() => {
             toast.success('Profile Update successful!,Please reload to see changes!')

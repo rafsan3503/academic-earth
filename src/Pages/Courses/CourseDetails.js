@@ -4,7 +4,9 @@ import Pdf from "react-to-pdf";
 import { FcDownload } from "react-icons/fc";
 
 const CourseDetails = () => {
+  // get dynamic course data 
   const course = useLoaderData();
+  // react to pdf package
   const ref = React.createRef();
   const options = {
     orientation: "landscape",
@@ -18,6 +20,8 @@ const CourseDetails = () => {
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
               {course.name}
             </h2>
+
+            {/* generate pdf link  */}
             <React.Fragment>
               <Pdf targetRef={ref} options={options} filename={course.name}>
                 {({ toPdf }) => (
@@ -69,6 +73,7 @@ const CourseDetails = () => {
                 ))}
 
                 <h2 className="text-3xl font-bold">Price: {course.price}$</h2>
+                {/* private route  */}
                 <Link
                   to={`/checkout/${course.id}`}
                   className="btn btn-outline btn-accent"

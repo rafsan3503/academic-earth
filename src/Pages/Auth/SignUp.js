@@ -4,9 +4,11 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const SignUp = () => {
+  // get neccesary function from context api 
   const { createUser, updateUserInfo } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // form submit 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,12 +17,15 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    // email validation 
+
     let correctEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-z]+)$/;
     if (!correctEmail.test(email)) {
       toast.error("Invalid Email!!");
       return;
     }
 
+    // password validation 
     if (!/(?=.*[a-zA-Z])/.test(password)) {
       toast.error("password must have letters!!");
       return;
@@ -38,6 +43,8 @@ const SignUp = () => {
       return;
     }
 
+
+    // user create 
     createUser(email, password)
       .then((result) => {
         updateUserInfo(fullName, photoUrl)
