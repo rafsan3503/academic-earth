@@ -159,7 +159,7 @@ const Premium = () => {
           </div>
         </section>
 
-        <div className="flex flex-col max-w-xl mx-auto border-2 border-amber-200 p-8 shadow-sm rounded-xl lg:p-12 my-10">
+        <div className="flex flex-col max-w-xl mx-auto  p-8 shadow-sm rounded-xl lg:p-12 my-10">
           <div className="flex flex-col items-center w-full">
             <h2 className="text-3xl font-semibold text-center">
               Your opinion matters!
@@ -243,11 +243,11 @@ const Premium = () => {
               <textarea
                 rows="3"
                 placeholder="Message..."
-                className="p-4 rounded-md resize-none text-gray-100 bg-amber-900"
+                className="p-4 rounded-md resize-none text-black bg-teal-200"
               ></textarea>
               <button onClick={handleFeedback}
                 type="button"
-                className="py-4 my-8 font-semibold rounded-md text-gray-900 bg-violet-400"
+                className="py-4 my-8 font-semibold rounded-md text-gray-900 bg-violet-200"
               >
                 Leave feedback
               </button>
@@ -258,7 +258,7 @@ const Premium = () => {
             to={`/courses/${premium.id}`}
               rel="noopener noreferrer"
               href="#"
-              className="text-sm text-gray-400"
+              className="text-sm text-gray-400 btn btn-outline"
             >
               Back to Previous Page
             </Link>

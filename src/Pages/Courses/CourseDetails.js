@@ -14,7 +14,7 @@ const CourseDetails = () => {
   };
   return (
     <div>
-      <section className="dark:bg-gray-800 dark:text-gray-100">
+      <section className="dark:bg-gray-800 dark:text-gray-100 max-w-[1000px] mx-auto">
         <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
           <div className="flex items-center gap-3">
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
@@ -35,8 +35,8 @@ const CourseDetails = () => {
               </Pdf>
             </React.Fragment>
           </div>
-          <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
-            <div ref={ref} className='text-center'>
+          <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center" ref={ref}>
+            <div className='text-center'>
               <h3 className="text-2xl font-bold tracking-tight sm:text-3xl dark:text-gray-50">
                 Description:
               </h3>
@@ -74,6 +74,7 @@ const CourseDetails = () => {
 
                 <h2 className="text-3xl font-bold">Price: {course.price}$</h2>
                 {/* private route  */}
+                <div className="flex gap-2">
                 <Link
                   to={`/checkout/${course.id}`}
                   className="btn btn-outline btn-accent"
@@ -83,6 +84,7 @@ const CourseDetails = () => {
                 <Link to="/courses" className="btn btn-outline">
                   Back to courses
                 </Link>
+                </div>
               </div>
             </div>
             <div aria-hidden="true" className="mt-10 lg:mt-0">

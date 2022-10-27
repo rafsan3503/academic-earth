@@ -52,9 +52,8 @@ const SignUp = () => {
           .catch((error) => {
             toast.error(error.message);
           });
-        toast.success("Success! Log In now");
-        console.log(result.user);
-        navigate("/login");
+        toast.success("Success!!, User created");
+        navigate('/login');
       })
       .catch((error) => {
         toast.error(error.message);
